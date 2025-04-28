@@ -44,6 +44,26 @@ else
     echo "${GREEN}已确认登录用户: $GH_USERNAME${NC}"
 fi
 
+# 创建文件夹结构
+echo "${YELLOW}创建项目文件夹结构...${NC}"
+mkdir -p specs
+
+# 移动规范文件到specs文件夹
+if [ -f "Specification.md" ]; then
+    mv Specification.md specs/
+    echo "${GREEN}已移动 Specification.md 到 specs 文件夹${NC}"
+fi
+
+if [ -f "base-config.toml" ]; then
+    mv base-config.toml specs/
+    echo "${GREEN}已移动 base-config.toml 到 specs 文件夹${NC}"
+fi
+
+if [ -f "site-config-spec.toml" ]; then
+    mv site-config-spec.toml specs/
+    echo "${GREEN}已移动 site-config-spec.toml 到 specs 文件夹${NC}"
+fi
+
 # 检查本地是否已初始化Git仓库
 if [ ! -d ".git" ]; then
     echo "${YELLOW}初始化本地Git仓库...${NC}"
