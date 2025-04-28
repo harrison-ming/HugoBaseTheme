@@ -1,0 +1,93 @@
+# Hugo 子站点配置文件规范 (site-config-spec.toml)
+# 本文件定义了各子站点需要自定义的配置项
+
+# 基本站点信息 - 必须覆盖
+title = "Site Title"                       # 站点显示标题
+baseURL = "https://example.com/"           # 站点URL(含末尾斜杠)
+languageCode = "zh-cn"                     # 站点语言代码
+defaultContentLanguage = "zh"              # 默认内容语言
+
+# 站点标识配置
+[params]
+  # 站点身份信息 - 必须覆盖
+  siteName = "site-name"                   # 站点名称(用于文件夹和仓库名)
+  siteDescription = "Site description"     # 站点描述
+  
+  # 站点颜色和品牌设置
+  primaryColor = "#007bff"                 # 主色调
+  secondaryColor = "#6c757d"               # 辅助色调
+  logoPath = "images/logo.png"             # Logo路径
+  faviconPath = "images/favicon.ico"       # 站点图标路径
+  
+  # 站点SEO信息 - 建议自定义
+  keywords = "keyword1, keyword2, keyword3"  # 站点关键词
+  
+  # 社交媒体链接
+  [params.social]
+    twitter = "username"                   # Twitter用户名
+    facebook = "username"                  # Facebook页面名
+    instagram = "username"                 # Instagram用户名
+    linkedin = "username"                  # LinkedIn用户名
+    github = "username"                    # GitHub用户名
+  
+  # Google Analytics配置 - 可选覆盖
+  googleAnalytics = "UA-XXXXXXXX-X"        # GA跟踪ID
+  enableGoogleAnalytics = true             # 是否启用GA
+
+  # 子站特有设置 - 根据需要添加
+  [params.custom]
+    showHeaderImage = true                 # 是否显示头部大图
+    headerImagePath = "images/header.jpg"  # 头部大图路径
+    enableNewsletter = false               # 是否启用新闻订阅
+    contactFormEndpoint = ""               # 联系表单提交端点
+
+# 菜单设置
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 3
+  [[menu.main]]
+    identifier = "contact"
+    name = "联系"
+    url = "/contact/"
+    weight = 4
+
+# GitHub仓库配置
+[params.github]
+  username = "harrison-ming"               # GitHub用户名
+  private = false                          # 是否为私有仓库
+  branch = "main"                          # 主分支名称
+
+# 内容组织设置
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# 分页设置
+[pagination]
+  postsPerPage = 10                        # 每页显示的文章数
+
+# 本地化设置
+[languages]
+  [languages.zh]
+    languageName = "简体中文"
+    weight = 1
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "English Site Title"
+    [languages.en.params]
+      siteDescription = "English site description"

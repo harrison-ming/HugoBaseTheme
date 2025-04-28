@@ -1,0 +1,58 @@
+# Hugo Base Theme 基础配置文件规范
+# 所有子站点共享的基础设置
+
+# 基本设置
+title = "Base Site Title"          # 默认站点标题，会被子站点覆盖
+baseURL = "https://example.com/"   # 默认URL，会被子站点覆盖
+languageCode = "en-us"             # 默认语言代码，会被子站点覆盖
+theme = "base-theme"               # 基础主题名称
+
+# 作者信息
+[author]
+  name = "Default Author"
+  email = "author@example.com"
+
+# 默认参数
+[params]
+  description = "Default site description"
+  mainSections = ["posts"]
+  # Google Analytics 默认设置
+  googleAnalytics = ""  # 默认为空，由子站点提供
+  enableGoogleAnalytics = true
+  
+  # SEO相关默认设置
+  enableOpenGraph = true
+  enableTwitterCards = true
+  enableSchemaOrg = true
+  enableCanonicalURL = true
+  
+  # 性能优化默认设置
+  lazyLoadImages = true
+  minifyCSS = true
+  minifyJS = true
+  
+  # 安全相关设置
+  enableCSP = true
+  
+# 页面和内容处理
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许HTML内容
+  
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+
+# 站点地图设置
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# 输出格式设置
+[outputs]
+  home = ["HTML", "RSS", "JSON", "SITEMAP"]
+  page = ["HTML"]
