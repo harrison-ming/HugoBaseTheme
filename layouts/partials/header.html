@@ -1,0 +1,38 @@
+<header class="py-6">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center">
+            {{ if site.Params.logoPath }}
+            <a href="{{ site.Home.RelPermalink }}" class="block">
+                <img src="{{ site.Params.logoPath | relURL }}" alt="{{ site.Title }}" class="h-12">
+            </a>
+            {{ else }}
+            <a href="{{ site.Home.RelPermalink }}" class="text-2xl font-bold text-blue-600">
+                {{ site.Title }}
+            </a>
+            {{ end }}
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+            <button type="button" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+                {{ $currentPage := . }}
+                {{ range site.Menus.main }}
+                <li>
+                    <a href="{{ .URL }}" class="hover:text-gray-600">
+                        {{ .Name }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </nav>
+    </div>
+</header> 

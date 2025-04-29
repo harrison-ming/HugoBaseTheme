@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="py-10">
+    <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+    
+    {{ with .Content }}
+    <div class="prose max-w-none mb-10">
+        {{ . }}
+    </div>
+    {{ end }}
+    
+    {{ $paginator := .Paginate (where .Pages "Type" "ne" "page") }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range $paginator.Pages }}
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            {{ with .Resources.GetMatch "featured-image.*" }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="w-full h-48 object-cover">
+            {{ end }}
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2">
+                    <a href="{{ .RelPermalink }}" class="hover:text-blue-600">{{ .Title }}</a>
+                </h2>
+                <div class="text-sm text-gray-500 mb-4">
+                    <span>{{ .Date.Format "2006-01-02" }}</span>
+                    {{ with .Params.categories }}
+                    <span class="mx-2">|</span>
+                    <span>
+                        {{ range $index, $category := . }}
+                        {{ if $index }}, {{ end }}
+                        <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}" class="hover:text-blue-600">{{ $category }}</a>
+                        {{ end }}
+                    </span>
+                    {{ end }}
+                </div>
+                <p class="text-gray-600 mb-4">{{ .Summary | truncate 120 }}</p>
+                <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800 font-medium">阅读更多 →</a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+    {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }} 

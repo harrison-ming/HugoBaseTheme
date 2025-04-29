@@ -1,0 +1,12 @@
+name = "HugoBaseTheme"
+license = "MIT"
+licenselink = "https://github.com/harrison-ming/HugoBaseTheme/blob/main/LICENSE"
+description = "A base theme for Hugo Theme Factory system"
+homepage = "https://github.com/harrison-ming/HugoBaseTheme"
+tags = ["responsive", "tailwind", "minimal", "modular", "base"]
+features = ["responsive", "modular", "seo"]
+min_version = "0.111.0"
+
+[author]
+  name = "Harrison Ming"
+  homepage = "https://github.com/harrison-ming"

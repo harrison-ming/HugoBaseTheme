@@ -5,17 +5,18 @@
 title = "Base Site Title"          # 默认站点标题，会被子站点覆盖
 baseURL = "https://example.com/"   # 默认URL，会被子站点覆盖
 languageCode = "en-us"             # 默认语言代码，会被子站点覆盖
-theme = "base-theme"               # 基础主题名称
-
-# 作者信息
-[author]
-  name = "Default Author"
-  email = "author@example.com"
+theme = "HugoBaseTheme"            # 基础主题名称
 
 # 默认参数
 [params]
   description = "Default site description"
   mainSections = ["posts"]
+  
+  # 作者信息
+  [params.Author]
+    name = "Default Author"
+    email = "author@example.com"
+  
   # Google Analytics 默认设置
   googleAnalytics = ""  # 默认为空，由子站点提供
   enableGoogleAnalytics = true
